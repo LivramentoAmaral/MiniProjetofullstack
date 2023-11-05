@@ -1,0 +1,183 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+#root {
+  background-color: rgb(167, 167, 167);
+  display: flex;
+  height: 100vh;
+  justify-content: center;
+
+  align-items: center;
+}
+
+.container {
+  margin: 0 auto;
+  width: 95%;
+  padding: 10px;
+  background-color: #f0f0f0;
+  border: 1px solid #ccc;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  border-radius: 5px;
+}
+
+.containerinterno{
+  width: 100%;
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 10px;
+  justify-content: center;
+  align-items: center;
+}
+
+.tabela{
+  width: 70%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content:flex-start;
+  gap: 20px;
+  align-items: center;
+  padding: 10px;
+  align-self: start;
+}
+
+.tabela >table {
+  width: 100%;
+  height: fit-content;
+  border-collapse: collapse;
+  font-family: Arial, sans-serif;
+  
+
+}
+
+.tabela >table>thead{
+  background-color: #007BFF;
+  width: 100%;
+  color: white;
+  height: 5vh;
+  text-align: left;
+}
+
+.tabela >table>thead>tr{
+  border: 1px solid #dddddd;
+  width: fit-content;
+  text-align: center;
+
+
+}
+
+.tabela>table>tbody{
+  border: 1px solid #dddddd;
+  text-align: right;
+
+  
+}
+
+.tabela >table>tbody>tr{
+  border: 1px solid #dddddd;
+  text-align: center;
+  padding-left: 10px;
+
+}
+
+.tabela tbody tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+.tabela table tbody tr:hover {
+  background-color: #ddd;
+}
+
+
+
+
+.containerForm{
+  width: 30%;
+  border-left: 1px solid #ccc;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: self-start;
+  gap: 10px;
+  padding: 20px;
+  
+}
+
+
+.form{
+  width:100%;
+  display: flex;
+  flex-direction: column;
+  padding: 3%;
+  gap: 10px;
+  
+}
+
+
+.form>label{
+  width: 100% ;
+  display: flex;
+  justify-content: flex-start;
+  
+}
+.error {
+  color: red;
+  font-weight: bold;
+}
+.editButton,
+.removeButton,
+.cancelButton,
+.addButton,
+addButton {
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 5px 10px;
+  cursor: pointer;
+  margin-top: 10px;
+  margin-right: 5px;
+  transition: background-color 0.3s;
+}
+.editButton {
+  background-color: #007bff;
+}
+.removeButton {
+  background-color: #ff5733;
+}
+.addButton {
+  background-color: #28a745;
+}
+.cancelButton {
+  background-color: #ff5733;
+}
+.button:hover {
+  background-color: #ff4322;
+}
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+}
+.table th,
+.table td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}
+.table th {
+  background-color: #007bff;
+  color: white;
+}
+.form label {
+  margin-right: 10px;
+}
+.form input {
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}

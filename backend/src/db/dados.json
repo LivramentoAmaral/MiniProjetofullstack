@@ -1,0 +1,22 @@
+{
+    "agendamentos": [
+      {
+        "id": 1,
+        "tipo": "Laboratório",
+        "nome": "Laboratório 18",
+        "data": "2023-11-15",
+        "horaInicio": "14:00",
+        "horaTermino": "16:00",
+        "responsavel": "Estevão"
+      },
+      {
+        "id": 2,
+        "tipo": "Sala de Reunião",
+        "nome": "Sala 5",
+        "data": "2023-11-16",
+        "horaInicio": "10:00",
+        "horaTermino": "12:00",
+        "responsavel": "Marcos"
+      }
+    ]
+  }
