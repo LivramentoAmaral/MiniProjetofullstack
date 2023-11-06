@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import './App.css';
+import swal from 'sweetalert';
+
 
 function App() {
   const apiURL = 'http://localhost:8000';
@@ -75,15 +77,31 @@ function App() {
     }
   }
 
-  const RemoverAgendamento = async id => {
-    try {
-      await axios.delete(`${apiURL}/agendamentos/${id}`);
-      buscarAgendamentos();
-      setErro('');
-    } catch (error) {
-      setErro(`Erro ao remover agendamento: ${error.message}`);
+  const RemoverAgendamento = async (id) => {
+    // Exibe uma janela de confirmação usando SweetAlert
+    const confirmacao = await swal("Tem certeza que apagar este registro?", {
+      dangerMode: true,
+      buttons:["Não", "Remover"] 
+        });
+  
+    if (confirmacao) {
+      try {
+        // Faz a solicitação de exclusão usando o Axios
+        await axios.delete(`${apiURL}/agendamentos/${id}`);
+  
+        // Após a exclusão, chame a função para atualizar a lista de agendamentos
+        buscarAgendamentos();
+  
+        // Limpa qualquer mensagem de erro anterior
+        setErro('');
+      } catch (error) {
+        // Em caso de erro, exiba uma mensagem de erro
+        setErro(`Erro ao remover agendamento: ${error.message}`);
+      }
     }
-  }
+  };
+  
+  
 
   useEffect(() => {
     buscarAgendamentos();
@@ -138,7 +156,7 @@ function App() {
             </tbody>
           </table>
         </div>
-        <div className="containerForm">
+        <form className="containerForm" onSubmit={AdicionarAgendamento}>
           <h2>Adicionar/Atualizar Agendamento</h2>
           <div className="form">
             <label>Tipo: </label>
@@ -148,6 +166,7 @@ function App() {
               onChange={e =>
                 setNovoAgendamento({ ...novoAgendamento, tipo: e.target.value })
               }
+              required
             />
             <label>Nome Sala/Laboratório: </label>
             <input
@@ -156,6 +175,8 @@ function App() {
               onChange={e =>
                 setNovoAgendamento({ ...novoAgendamento, nome: e.target.value })
               }
+
+              required
             />
             <label>Data: </label>
             <input
@@ -164,6 +185,7 @@ function App() {
               onChange={e =>
                 setNovoAgendamento({ ...novoAgendamento, data: e.target.value })
               }
+              required
             />
             <label>Hora de Início: </label>
             <input
@@ -172,6 +194,7 @@ function App() {
               onChange={e =>
                 setNovoAgendamento({ ...novoAgendamento, horaInicio: e.target.value })
               }
+              required
             />
             <label>Hora de Término: </label>
             <input
@@ -180,6 +203,7 @@ function App() {
               onChange={e =>
                 setNovoAgendamento({ ...novoAgendamento, horaTermino: e.target.value })
               }
+              required={true}
             />
             <label>Responsável: </label>
             <input
@@ -188,15 +212,16 @@ function App() {
               onChange={e =>
                 setNovoAgendamento({ ...novoAgendamento, responsavel: e.target.value })
               }
+              required={true}
             />
-            <button className="addButton" onClick={AdicionarAgendamento}>
+            <button className="addButton" type='submit'>
               {agendamentoSelecionado ? 'Atualizar' : 'Adicionar'}
             </button>
             <button className="cancelButton" onClick={CancelarAtualizacao}>
               Cancelar
             </button>
           </div>
-        </div>
+        </form>
       </div>
     </div>
   );
