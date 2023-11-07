@@ -58,6 +58,7 @@ function App() {
   const EditarAgendamento = agendamento => {
     setAgendamentoSelecionado(agendamento);
     setNovoAgendamento({
+      id: agendamento.id,
       tipo: agendamento.tipo,
       nome: agendamento.nome,
       data: agendamento.data,
